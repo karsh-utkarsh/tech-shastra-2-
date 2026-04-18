@@ -1,0 +1,755 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+
+/* ═══════════════════════════════════════════════════════════
+   KEYFRAMES
+   ═══════════════════════════════════════════════════════════ */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: var(--op);
+  }
+  50% {
+    opacity: calc(var(--op) * 0.15);
+  }
+}
+@keyframes scan {
+  0% {
+    top: -4px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hexFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+@keyframes titleGlow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 20px rgba(255, 90, 0, 0.6),
+      0 0 60px rgba(255, 90, 0, 0.25);
+  }
+  50% {
+    text-shadow:
+      0 0 40px rgba(255, 90, 0, 0.85),
+      0 0 90px rgba(255, 90, 0, 0.4);
+  }
+}
+@keyframes underlineGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(255, 60, 60, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(255, 60, 60, 0.9);
+  }
+}
+@keyframes borderShimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 200%;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLLBAR — HIDDEN
+   ═══════════════════════════════════════════════════════════ */
+.contact-root ::-webkit-scrollbar {
+  display: none;
+}
+.contact-root {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ROOT CONTAINER
+   ═══════════════════════════════════════════════════════════ */
+.contact-root {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 6, 18, 1) 0%,
+    rgba(12, 8, 26, 1) 30%,
+    rgba(6, 4, 16, 1) 60%,
+    rgba(3, 2, 10, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  font-family: "Rajdhani", sans-serif;
+  padding-bottom: 80px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STARS
+   ═══════════════════════════════════════════════════════════ */
+.contact-stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.contact-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEBULA OVERLAY
+   ═══════════════════════════════════════════════════════════ */
+.contact-nebula {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 20% 70%,
+      rgba(60, 10, 90, 0.35) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 85% 25%,
+      rgba(20, 8, 70, 0.4) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 90% 40% at 50% 90%,
+      rgba(80, 20, 40, 0.2) 0%,
+      transparent 70%
+    );
+  opacity: 0.9;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCAN LINE
+   ═══════════════════════════════════════════════════════════ */
+.contact-scan-wrap {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.contact-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(120, 60, 255, 0.04),
+    transparent
+  );
+  animation: scan 10s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BACK LINK
+   ═══════════════════════════════════════════════════════════ */
+.contact-back {
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  z-index: 40;
+  font-family: "Orbitron", monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #6098d0;
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(96, 152, 208, 0.2);
+  border-radius: 2px;
+  background: rgba(10, 28, 60, 0.3);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.contact-back:hover {
+  border-color: rgba(96, 152, 208, 0.5);
+  color: #a0d0ff;
+  box-shadow: 0 0 20px rgba(96, 152, 208, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HERO TITLE SECTION
+   ═══════════════════════════════════════════════════════════ */
+.contact-hero-section {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 80px 24px 40px;
+  width: 100%;
+  max-width: 1000px;
+  animation: fadeUp 0.6s ease both;
+}
+
+/* ── Hexagonal Character Frames ───────────────────────────── */
+.contact-hex-frame {
+  position: relative;
+  width: 130px;
+  height: 150px;
+  flex-shrink: 0;
+  animation: hexFloat 4s ease-in-out infinite;
+}
+.contact-hex-left {
+  animation-delay: 0s;
+}
+.contact-hex-right {
+  animation-delay: 2s;
+}
+
+.contact-hex-clip {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  overflow: hidden;
+  border-radius: 0;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(40, 20, 80, 0.6),
+    rgba(20, 10, 50, 0.8)
+  );
+}
+.contact-hex-clip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.85) saturate(1.2);
+}
+.contact-hex-right .contact-hex-clip img {
+  object-position: top center;
+}
+.contact-hex-glow {
+  position: absolute;
+  inset: -6px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(
+    135deg,
+    rgba(100, 60, 255, 0.25),
+    rgba(255, 60, 90, 0.15),
+    rgba(60, 180, 255, 0.25)
+  );
+  z-index: -1;
+  animation: glowPulse 3s ease-in-out infinite;
+  filter: blur(4px);
+}
+
+/* ── Title Block ──────────────────────────────────────────── */
+.contact-title-block {
+  text-align: center;
+  flex-shrink: 0;
+}
+.contact-title {
+  font-family: "Orbitron", monospace;
+  font-size: 52px;
+  font-weight: 900;
+  color: #ff5a00;
+  letter-spacing: 6px;
+  margin: 0;
+  animation: titleGlow 3s ease-in-out infinite;
+  line-height: 1.1;
+}
+.contact-title-accent {
+  color: #ff3c3c;
+}
+.contact-title-underline {
+  width: 250px;
+  max-width: 80vw;
+  height: 4px;
+  background: linear-gradient(90deg, #ff3c3c, #ff6a00);
+  border-radius: 2px;
+  margin: 14px auto 16px;
+  animation: underlineGlow 2s ease-in-out infinite;
+}
+.contact-subtitle {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 15px;
+  color: #c0b8d8;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTENT GRID SECTION
+   ═══════════════════════════════════════════════════════════ */
+.contact-grid-section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 20px 24px 0;
+}
+.contact-grid-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Static Card Block ───────────────────────────────────────── */
+.contact-card-block {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  animation: fadeUp 0.5s ease both;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 10, 32, 0.95),
+    rgba(12, 8, 26, 0.98)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Left accent border */
+.contact-card-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, #ff2d7c, #ff6a00, #ff2d7c);
+  background-size: 100% 200%;
+  animation: borderShimmer 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Card header */
+.contact-card-header {
+  width: 100%;
+  padding: 16px 24px 16px 28px;
+  background: linear-gradient(
+    135deg,
+    rgba(22, 14, 40, 0.85) 0%,
+    rgba(14, 10, 30, 0.92) 50%,
+    rgba(18, 12, 36, 0.88) 100%
+  );
+  border-bottom: 1px solid rgba(255, 45, 124, 0.15);
+}
+
+.contact-card-title {
+  font-family: "Orbitron", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #e8e0f0;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* Card Body */
+.contact-card-body {
+  padding: 24px 28px 28px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ACCORDION BODY — Faculty
+   ═══════════════════════════════════════════════════════════ */
+.contact-accordion-body {
+  animation: fadeUp 0.3s ease both;
+}
+.contact-faculty-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.contact-faculty-item {
+  padding: 20px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+  transition: all 0.3s ease;
+}
+.contact-faculty-item:hover {
+  border-color: rgba(255, 45, 124, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 25px rgba(255, 45, 124, 0.08);
+}
+.contact-faculty-name {
+  font-family: "Orbitron", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+.contact-faculty-pos {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 13px;
+  color: #ff8c40;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(255, 140, 64, 0.25);
+}
+.contact-faculty-phone {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 16px;
+  color: #c8dae8;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.contact-phone-icon {
+  font-size: 14px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ACCORDION BODY — Venue
+   ═══════════════════════════════════════════════════════════ */
+.contact-venue-detail {
+  padding: 8px 0;
+}
+.contact-venue-name {
+  font-family: "Orbitron", monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.2);
+}
+.contact-venue-full {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 15px;
+  color: #ff8c40;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px rgba(255, 140, 64, 0.3);
+}
+.contact-venue-addr {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 14px;
+  color: #8a98b8;
+  letter-spacing: 1.2px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.contact-venue-coords-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.contact-coord-chip {
+  font-family: "Orbitron", monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #60b0f0;
+  padding: 6px 14px;
+  border: 1px solid rgba(96, 176, 240, 0.2);
+  border-radius: 3px;
+  background: rgba(96, 176, 240, 0.06);
+}
+.contact-coord-active {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.2);
+  background: rgba(74, 222, 128, 0.06);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ACCORDION BODY — Map
+   ═══════════════════════════════════════════════════════════ */
+.contact-map-container {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.contact-map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: saturate(0.35) brightness(0.55) contrast(1.3);
+  transition: filter 0.4s ease;
+}
+.contact-map-container:hover iframe {
+  filter: saturate(0.6) brightness(0.7) contrast(1.2);
+}
+.contact-map-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      transparent 30%,
+      rgba(8, 6, 18, 0.55) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(8, 6, 18, 0.4) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(8, 6, 18, 0.6) 100%
+    );
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ACCORDION BODY — Event Details
+   ═══════════════════════════════════════════════════════════ */
+.contact-event-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.contact-event-chip {
+  text-align: center;
+  padding: 16px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+}
+.contact-event-chip:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+.contact-event-chip-label {
+  font-family: "Orbitron", monospace;
+  font-size: 9px;
+  color: #ffffff;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+.contact-event-chip-val {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ACCORDION BODY — Email
+   ═══════════════════════════════════════════════════════════ */
+.contact-email-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.contact-email-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+}
+.contact-email-row:hover {
+  border-color: rgba(255, 45, 124, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+}
+.contact-email-icon {
+  font-size: 18px;
+}
+.contact-email-addr {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 17px;
+  color: #c8dae8;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .contact-grid-section {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+  .contact-hex-frame {
+    width: 100px;
+    height: 116px;
+  }
+  .contact-title {
+    font-size: 40px;
+    letter-spacing: 4px;
+  }
+  .contact-subtitle {
+    font-size: 13px;
+    letter-spacing: 3px;
+  }
+  .contact-hero-section {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero-section {
+    padding: 70px 16px 30px;
+    gap: 16px;
+  }
+  .contact-hex-frame {
+    width: 80px;
+    height: 93px;
+  }
+  .contact-title {
+    font-size: 30px;
+    letter-spacing: 3px;
+  }
+  .contact-subtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+  .contact-card-title {
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+  .contact-card-header {
+    padding: 16px 20px 16px 24px;
+  }
+  .contact-card-body {
+    padding: 18px 20px 22px;
+  }
+  .contact-faculty-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .contact-event-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .contact-map-container {
+    height: 220px;
+  }
+  .contact-grid-section {
+    padding: 16px 16px 0;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero-section {
+    padding: 50px 8px 10px;
+    gap: 8px;
+  }
+  .contact-hex-frame {
+    width: 45px;
+    height: 52px;
+  }
+  .contact-title {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+  }
+  .contact-subtitle {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+  .contact-title-underline {
+    width: 40px;
+    height: 2px;
+    margin: 6px auto 8px;
+  }
+  .contact-card-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  .contact-card-header {
+    padding: 14px 16px 14px 20px;
+  }
+  .contact-card-body {
+    padding: 14px 16px 18px;
+  }
+  .contact-faculty-name {
+    font-size: 12px;
+  }
+  .contact-faculty-pos {
+    font-size: 11px;
+  }
+  .contact-faculty-phone {
+    font-size: 14px;
+  }
+  .contact-venue-name {
+    font-size: 14px;
+  }
+  .contact-venue-full {
+    font-size: 13px;
+  }
+  .contact-event-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .contact-event-chip {
+    padding: 10px 8px;
+  }
+  .contact-event-chip-label {
+    font-size: 7px;
+  }
+  .contact-event-chip-val {
+    font-size: 13px;
+  }
+  .contact-map-container {
+    height: 180px;
+  }
+  .contact-coord-chip {
+    font-size: 8px;
+    padding: 5px 10px;
+  }
+  .contact-email-addr {
+    font-size: 14px;
+  }
+  .contact-back {
+    font-size: 7px;
+    padding: 5px 10px;
+  }
+  .contact-grid-section {
+    padding: 12px 12px 0;
+    gap: 12px;
+  }
+}

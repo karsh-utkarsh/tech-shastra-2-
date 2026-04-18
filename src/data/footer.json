@@ -1,0 +1,45 @@
+{
+  "brand": {
+    "name": "TechShastra",
+    "logo": "/logo_new.png",
+    "description": "NSU proudly presents TechShastra — the Techno Cultural Fest of Netaji Subhas University, a platform for students to showcase skills, creativity, and innovation across multiple domains of technology."
+  },
+  "navigation": [
+    {
+      "name": "About",
+      "links": "#about"
+    },
+    {
+      "name": "Events",
+      "links": "#events"
+    },
+    {
+      "name": "Schedule",
+      "links": "#schedule"
+    },
+    {
+      "name": "Registration",
+      "links": "/registration"
+    },
+    {
+      "name": "Collaborators",
+      "links": "#sponsors"
+    },
+    {
+      "name": "FAQs",
+      "links": "#faqs"
+    }
+  ],
+  "contact": {
+    "address": "Pokhari, PO: Bhilai Pahari, PS: MGM,\nDist: Jamshedpur, Jharkhand – 831012",
+    "email": "techshastra@nsuniv.ac.in",
+    "website": "https://nsuniv.ac.in",
+    "instagram": "@techshastra.nsu",
+    "contactDetail": "Rajdeep Ray (CSE) - 9835340860\nAnkesh (Civil) - 8757900389\nVickey Kumar (Electrical) - 7761868560\nVishal Yadav (Mechanical) - 9861368901"
+  },
+  "footerBottom": {
+    "copyright": "© 2026 TechShastra, NSU. All rights reserved.",
+    "builtBy": "TechShastra Dev Team",
+    "builtByLink": "#"
+  }
+}

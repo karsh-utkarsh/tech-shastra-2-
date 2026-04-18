@@ -1,0 +1,982 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+
+/* === Keyframes === */
+@keyframes auraGlow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+@keyframes orbitSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes saturnSpin {
+  from {
+    transform: rotateX(74deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(74deg) rotateZ(360deg);
+  }
+}
+@keyframes blinkDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.22;
+    transform: translateX(-50%) scale(0.4);
+  }
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: var(--op);
+  }
+  50% {
+    opacity: calc(var(--op) * 0.15);
+  }
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scan {
+  0% {
+    top: -4px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* === Reset === */
+* {
+  box-sizing: border-box;
+}
+
+/* === Scrollbar — hidden entirely === */
+::-webkit-scrollbar {
+  display: none;
+}
+.timeline-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* === Root Container === */
+.timeline-root {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 12, 18, 0.98) 0%,
+    rgba(3, 5, 8, 1) 36%,
+    rgba(6, 9, 14, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  font-family: "Rajdhani", sans-serif;
+}
+
+/* === Stars === */
+.timeline-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.timeline-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* === Nebula overlay === */
+.timeline-nebula {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 90% 50% at 12% 68%,
+      rgba(10, 20, 75, 0.48) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 65% 55% at 88% 20%,
+      rgba(36, 6, 58, 0.38) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 110% 32% at 50% 100%,
+      rgba(5, 10, 40, 0.65) 0%,
+      transparent 68%
+    ),
+    linear-gradient(rgba(140, 176, 220, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140, 176, 220, 0.04) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    auto,
+    44px 44px,
+    44px 44px;
+  background-position: center, center, center, center, center;
+  opacity: 0.9;
+}
+
+.timeline-main::before {
+  content: "";
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 54%;
+  height: 140px;
+  transform: translateY(-50%);
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.03) 18%,
+      transparent 50%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 66%);
+  filter: blur(1px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.timeline-main::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 112px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.16),
+    transparent
+  );
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* === Scan line === */
+.timeline-scan-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.timeline-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(60, 140, 255, 0.04),
+    transparent
+  );
+  animation: scan 10s linear infinite;
+}
+
+/* === Header === */
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 28px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(3, 5, 8, 0.86);
+  backdrop-filter: blur(16px);
+  z-index: 30;
+  flex-shrink: 0;
+}
+
+/* === Header === */
+.timeline-header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.timeline-logo {
+  font-family: "Orbitron", monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #6098d0;
+  font-weight: 700;
+}
+.timeline-logo-accent {
+  color: #d8a830;
+}
+.timeline-logo-tag {
+  font-family: "Orbitron", monospace;
+  font-size: 7px;
+  letter-spacing: 4px;
+  color: #2e4858;
+  font-weight: 400;
+}
+.timeline-divider {
+  width: 1px;
+  height: 14px;
+  background: #1a2838;
+}
+.timeline-header-center {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.timeline-user-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 14px;
+  border: 1px solid rgba(60, 140, 255, 0.18);
+  border-radius: 2px;
+  background: rgba(10, 28, 60, 0.3);
+}
+.timeline-user-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4090d8;
+  box-shadow: 0 0 8px #4090d8;
+}
+.timeline-user-name {
+  font-family: "Orbitron", monospace;
+  font-size: 15px;
+  color: #ffcc00;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+.timeline-user-name span {
+  color: #ffffff;
+}
+.timeline-user-mastery {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 13px;
+  color: #a0c0e0;
+  letter-spacing: 2px;
+}
+.timeline-user-mastery span {
+  color: #60c0ff;
+}
+.timeline-currency-label {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 8px;
+  color: #283848;
+  letter-spacing: 2px;
+}
+.timeline-currency-val {
+  font-family: "Orbitron", monospace;
+  font-size: 10px;
+}
+.timeline-header-right {
+  display: flex;
+  gap: 8px;
+}
+.timeline-icon-btn {
+  min-width: 26px;
+  height: 26px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  font-size: 9px;
+  font-family: "Orbitron", monospace;
+  letter-spacing: 1px;
+  color: #7f93a6;
+  cursor: pointer;
+  background: none;
+}
+
+/* === Main content area === */
+.timeline-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  position: relative;
+  padding: 6px 0 10px;
+}
+
+/* === Active info panel at top === */
+.timeline-info {
+  text-align: center;
+  padding: 10px 20px 4px;
+  min-height: 90px;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+.timeline-info--hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.timeline-info--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline-info__distance {
+  font-family: "Orbitron", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.timeline-info__name {
+  font-family: "Orbitron", monospace;
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 8px;
+}
+.timeline-info__desc {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 15px;
+  color: #e8eef2;
+  letter-spacing: 1.5px;
+  margin-top: 6px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === Scroll area with arrows === */
+.timeline-scroll-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.timeline-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(5, 10, 20, 0.85);
+  backdrop-filter: blur(8px);
+  color: #6098d0;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+.timeline-arrow:hover {
+  border-color: rgba(96, 152, 208, 0.4);
+  background: rgba(10, 28, 60, 0.7);
+  box-shadow: 0 0 30px rgba(96, 152, 208, 0.2);
+  color: #a0d0ff;
+}
+.timeline-arrow--left {
+  left: 12px;
+}
+.timeline-arrow--right {
+  right: 12px;
+}
+
+.timeline-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 34px 80px 24px;
+  width: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.timeline-scroll::-webkit-scrollbar {
+  display: none;
+}
+.timeline-track {
+  display: flex;
+  align-items: flex-start;
+  width: max-content;
+  min-width: 100%;
+  justify-content: center;
+  gap: clamp(16px, 2vw, 28px);
+  padding: 0 8px 16px;
+}
+.timeline-track-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* === Planet wrapper === */
+.timeline-planet-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.45s ease;
+  flex-shrink: 0;
+  position: relative;
+  padding-top: 18px;
+}
+.timeline-planet-wrap--active {
+  transform: translateY(-10px);
+  width: 220px;
+  z-index: 10;
+}
+.timeline-planet-wrap--inactive {
+  transform: translateY(0);
+  width: 110px;
+  z-index: 1;
+}
+.timeline-planet-wrap--locked {
+  cursor: not-allowed;
+}
+.timeline-planet-wrap--unlocked {
+  cursor: pointer;
+}
+
+/* === Planet ball === */
+.timeline-planet-ball {
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  transition:
+    box-shadow 0.6s ease,
+    transform 0.35s ease;
+  z-index: 2;
+}
+.timeline-planet-wrap--active .timeline-planet-ball {
+  transform: translateY(-2px) scale(1.03);
+}
+.timeline-planet-img {
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  transition: filter 0.6s ease;
+  display: block;
+  animation: orbitSpin 30s linear infinite;
+}
+.timeline-planet-shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+/* Atmosphere color-tinted rim */
+.timeline-planet-atmosphere {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+/* Primary specular — tight glossy spot */
+.timeline-planet-specular {
+  position: absolute;
+  top: 6%;
+  left: 10%;
+  width: 30%;
+  height: 22%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+  filter: blur(2px);
+}
+/* Secondary specular — broad soft sheen */
+.timeline-planet-specular2 {
+  position: absolute;
+  top: 3%;
+  left: 5%;
+  width: 55%;
+  height: 45%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 40% 35%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+  filter: blur(4px);
+}
+.timeline-planet-rim {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+.timeline-planet-lock-icon {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Saturn Rings === */
+.timeline-saturn-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+.timeline-saturn-ring-outer {
+  border-radius: 50%;
+  transform: rotateX(74deg);
+  pointer-events: none;
+  transition: all 0.6s ease;
+  position: relative;
+  animation: saturnSpin 40s linear infinite;
+}
+.timeline-saturn-ring-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72%;
+  height: 72%;
+  border-radius: 50%;
+}
+
+/* === Aura + orbit rings (active planet) === */
+.timeline-aura {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: auraGlow 3s ease-in-out infinite;
+  width: 230px;
+  height: 230px;
+  opacity: 0.9;
+}
+
+/* === Planet label area === */
+.timeline-planet-label {
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  min-height: 108px;
+  width: 100%;
+  padding-top: 20px;
+}
+.timeline-planet-label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 14px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), transparent);
+}
+.timeline-planet-marker {
+  width: 10px;
+  height: 10px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.timeline-planet-tag {
+  font-family: "Orbitron", monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+  margin-bottom: 7px;
+}
+.timeline-planet-name {
+  font-family: "Orbitron", monospace;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  line-height: 1.3;
+}
+.timeline-planet-subtitle {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 12px;
+  color: #687887;
+  letter-spacing: 1.3px;
+  margin-top: 6px;
+}
+.timeline-planet-mission {
+  font-family: "Rajdhani", sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+}
+.timeline-blink-dot {
+  position: absolute;
+  bottom: 104px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: blinkDot 1.8s ease-in-out infinite;
+}
+
+/* === Connector line === */
+.timeline-line {
+  width: 48px;
+  align-self: flex-start;
+  margin-top: 62px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.timeline-line-seg {
+  flex: 1;
+  height: 1px;
+  transition: all 0.4s ease;
+}
+
+/* === Bottom bar === */
+.timeline-bottom-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  background: transparent;
+  backdrop-filter: blur(14px);
+  flex-wrap: wrap;
+  min-height: 74px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.timeline-stat-card {
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.02)
+  );
+  text-align: center;
+  min-width: 120px;
+  animation: fadeUp 0.35s ease both;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.timeline-stat-label {
+  font-family: "Orbitron", monospace;
+  font-size: 10px;
+  color: #ffffff;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+.timeline-stat-val {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.timeline-launch-btn {
+  padding: 9px 30px;
+  border-radius: 2px;
+  font-family: "Orbitron", monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.25s;
+  animation: fadeUp 0.35s ease 0.06s both;
+}
+.timeline-locked-msg {
+  font-family: "Orbitron", monospace;
+  font-size: 9px;
+  color: #222c38;
+  letter-spacing: 4px;
+  animation: fadeUp 0.35s ease both;
+}
+
+/* === Corner brackets === */
+.timeline-corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .timeline-header {
+    padding: 10px 18px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .timeline-scroll {
+    padding: 30px 50px 20px;
+  }
+  .timeline-info__name {
+    font-size: 20px;
+    letter-spacing: 5px;
+  }
+  .timeline-info__desc {
+    font-size: 16px;
+  }
+  .timeline-bottom-bar {
+    padding: 10px 18px;
+    gap: 8px;
+  }
+  .timeline-stat-card {
+    min-width: 90px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-scroll {
+    padding: 24px 36px 16px;
+  }
+  .timeline-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  .timeline-arrow--left {
+    left: 4px;
+  }
+  .timeline-arrow--right {
+    right: 4px;
+  }
+  .timeline-info {
+    min-height: 70px;
+    padding: 8px 14px 4px;
+  }
+  .timeline-info__name {
+    font-size: 18px;
+    letter-spacing: 4px;
+  }
+  .timeline-info__desc {
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .timeline-planet-wrap--active {
+    width: 165px;
+  }
+  .timeline-planet-wrap--inactive {
+    width: 100px;
+  }
+  .timeline-aura {
+    width: 185px;
+    height: 185px;
+  }
+  .timeline-bottom-bar {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  .timeline-stat-card {
+    min-width: 70px;
+    padding: 5px 8px;
+  }
+  .timeline-stat-label {
+    font-size: 6px;
+  }
+  .timeline-stat-val {
+    font-size: 12px;
+  }
+  .timeline-planet-label {
+    min-height: 90px;
+    padding-top: 14px;
+  }
+  .timeline-planet-tag {
+    font-size: 8px;
+    letter-spacing: 2.5px;
+  }
+  .timeline-planet-subtitle {
+    font-size: 10px;
+  }
+  .timeline-planet-mission {
+    font-size: 11px;
+  }
+  .timeline-line {
+    width: 28px;
+    margin-top: 42px;
+  }
+  .timeline-track {
+    gap: clamp(8px, 1.5vw, 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-header {
+    padding: 8px 12px;
+  }
+  .timeline-logo {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+  .timeline-scroll {
+    padding: 20px 20px 12px;
+  }
+  .timeline-arrow {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+  }
+  .timeline-arrow--left {
+    left: 2px;
+  }
+  .timeline-arrow--right {
+    right: 2px;
+  }
+  .timeline-info {
+    min-height: 56px;
+    padding: 4px 10px 2px;
+  }
+  .timeline-info__distance {
+    font-size: 7px;
+    letter-spacing: 3px;
+  }
+  .timeline-info__name {
+    font-size: 15px;
+    letter-spacing: 3px;
+  }
+  .timeline-info__desc {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+  .timeline-planet-wrap--active {
+    width: 120px;
+  }
+  .timeline-planet-wrap--inactive {
+    width: 72px;
+  }
+  .timeline-aura {
+    width: 140px;
+    height: 140px;
+  }
+  .timeline-bottom-bar {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+  }
+  .timeline-stat-card {
+    min-width: unset;
+    width: 100%;
+    padding: 4px 8px;
+  }
+  .timeline-stat-label {
+    font-size: 6px;
+  }
+  .timeline-stat-val {
+    font-size: 11px;
+  }
+  .timeline-planet-label {
+    min-height: 72px;
+    padding-top: 10px;
+  }
+  .timeline-planet-label::before {
+    height: 8px;
+  }
+  .timeline-planet-marker {
+    width: 7px;
+    height: 7px;
+    margin-bottom: 6px;
+  }
+  .timeline-planet-tag {
+    font-size: 7px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .timeline-planet-name {
+    letter-spacing: 1.2px !important;
+  }
+  .timeline-planet-subtitle {
+    font-size: 9px;
+    margin-top: 3px;
+  }
+  .timeline-planet-mission {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+  .timeline-line {
+    width: 18px;
+    margin-top: 37px;
+  }
+  .timeline-track {
+    gap: clamp(4px, 1vw, 10px);
+  }
+  .timeline-corner {
+    display: none;
+  }
+  .timeline-root::before,
+  .timeline-root::after {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .timeline-planet-wrap--active {
+    width: 100px;
+  }
+  .timeline-planet-wrap--inactive {
+    width: 56px;
+  }
+  .timeline-aura {
+    width: 110px;
+    height: 110px;
+  }
+  .timeline-info__name {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+  .timeline-scroll {
+    padding: 16px 14px 10px;
+  }
+  .timeline-planet-tag {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+  .timeline-planet-mission {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .timeline-line {
+    width: 12px;
+    margin-top: 37px;
+  }
+}
