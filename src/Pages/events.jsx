@@ -1313,12 +1313,12 @@ export default function Events() {
   Home
 </Link>
             </span>
-            <button
-  className="nav-register"
-  onClick={() => window.open("https://forms.gle/SgSDRDcgDK4fmM877", "_blank")}
->
-  REGISTER
-</button>
+           <button
+      className="nav-register"
+      onClick={() => navigate("/register")}
+    >
+      REGISTER
+    </button>
           </nav>
         </div>
       </header>
