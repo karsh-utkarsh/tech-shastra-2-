@@ -121,7 +121,7 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>{footerBottom.copyright}</p>
           <p>
-            Built with ❤️ by the{" "}
+            Built by the{" "}
             <a href={footerBottom.builtByLink}>{footerBottom.builtBy}</a>
           </p>
         </div>
