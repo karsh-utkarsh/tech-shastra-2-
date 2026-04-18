@@ -66,7 +66,7 @@ const STEPS = [
 ];
 
 const SOLO_EVENTS = [
-  { id: "coding", label: "Coding", icon: "💻" },
+  { id: "coding", label: "EACAPE THE ROOM", icon: "💻" },
   { id: "quiz", label: "Quiz", icon: "🧠" },
   { id: "debate", label: "Debate", icon: "🎤" },
   { id: "design", label: "UI Design", icon: "🎨" },
@@ -75,12 +75,14 @@ const SOLO_EVENTS = [
 ];
 
 const TEAM_EVENTS = [
-  { id: "hackathon", label: "Hackathon", icon: "⚡" },
-  { id: "robowar", label: "Robo War", icon: "🤖" },
-  { id: "gaming", label: "Gaming", icon: "🎮" },
-  { id: "startup", label: "Startup Pitch", icon: "🚀" },
-  { id: "treasure", label: "Treasure Hunt", icon: "🗺️" },
-  { id: "sports", label: "Sports", icon: "🏆" },
+  { id: "hackathon", label: "Quantum Quest", icon: "" },
+  { id: "robowar", label: "Bridge O Mania ", icon: "" },
+  { id: "gaming", label: "BGMI", icon: "🎮" },
+  { id: "startup", label: "kEYSTONE CHALLENGE", icon: "🚀" },
+  { id: "treasure", label: "MAELSTROM", icon: "🗺️" },
+  { id: "sports", label: "RAMPWALK", icon: "" },
+   { id: "CODE ", label: "CODE RELAY", icon: "" },
+    { id: "VIBE", label: "VIBE CODING", icon: "" },
 ];
 
 const EVENT_FEES = {
