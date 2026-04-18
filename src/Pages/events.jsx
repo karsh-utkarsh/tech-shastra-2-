@@ -1300,10 +1300,11 @@ export default function Events() {
         <div className="header-inner">
           <div className="logo">
             <span className="logo-icon">✦</span>
-            <div>
-              
-              <div className="logo-sub">TECHSHASTRA 2026</div>
-            </div>
+           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+  <div>
+    <div className="logo-sub">TECHSHASTRA 2026</div>
+  </div>
+</Link>
           </div>
           <nav className="header-nav">
             <span className="nav-item">
