@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Navbar from '../components/Navbar';
-import ParticleCanvas from '../components/ParticleCanvas';
-import MouseLight from '../components/MouseLight';
-import TeamCard from '../components/TeamCard';
+import Navbar from '../Components/Navbar';
+import ParticleCanvas from '../Components/ParticleCanvas';
+import MouseLight from '../Components/MouseLight';
+import TeamCard from '../Components/TeamCard';
 import { teams } from '../data/teamData';
 import "../Styles/team.css";
 function Team() {
