@@ -146,7 +146,7 @@ export default function LoginPage({ onLogin }) {
             <p className="lg-subtitle">
               {mode === "forgot"
                 ? "We'll beam a reset link to your coordinates"
-                : "Interstellar · Tech Fest · 2025"}
+                : "TECHSHASTRA 2026"}
             </p>
           </div>
 
