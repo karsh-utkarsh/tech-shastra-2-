@@ -548,7 +548,7 @@ export default function RegistrationForm({ onSubmit }) {
             <div className="planet-core" />
           </div>
           <h1 className="form-title">EVENT REGISTRATION</h1>
-          <p className="form-subtitle">Interstellar · Tech Fest · 2025</p>
+          <p className="form-subtitle">TechShastra 2026</p>
         </div>
 
         {/* Progress */}
