@@ -22,7 +22,7 @@ export default function Navbar({ mounted = true }) {
     setIsMenuOpen(false);
 
     // Go to homepage first
-    navigate("/home");
+    navigate("/");
 
     // Wait for page to render, then scroll
     setTimeout(() => {
