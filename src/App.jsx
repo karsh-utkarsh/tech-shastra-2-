@@ -5,6 +5,8 @@ import Hero from "./Pages/hero";
 import Events from "./Pages/events";
 import Home from "./Pages/home";
 import Team from "./Pages/team.jsx";
+import Register from "./Pages/register.jsx"
+import Login from "./Pages/login.jsx";
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
         <Route path ="/events" element={<Events />} />
          <Route path ="/" element={<Home />} />
          <Route path ="/team" element ={<Team />}  />
+         <Route path ="/register" element ={<Register />} />
+         <Route path ="/login" element ={<Login />} />
+
       </Routes>
     </Router>
   );

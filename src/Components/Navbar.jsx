@@ -81,14 +81,12 @@ export default function Navbar({ mounted = true }) {
         {/* ACTION BUTTON + MENU */}
         <div className="flex items-center gap-4 lg:gap-6 z-[60]">
           {/* REGISTER BUTTON */}
-          <a
-            href="https://forms.gle/SgSDRDcgDK4fmM877"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:block text-[10px] md:text-xs uppercase tracking-[0.2em] px-6 py-2 md:px-8 md:py-3 border border-white/20 rounded-full hover:bg-white hover:border-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-500 backdrop-blur-md syncopate-regular font-bold cursor-pointer text-white no-underline"
-          >
-            Register
-          </a>
+          <Link
+    to="/login"
+    className="hidden sm:block text-[10px] md:text-xs uppercase tracking-[0.2em] px-6 py-2 md:px-8 md:py-3 border border-white/20 rounded-full hover:bg-white hover:border-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-500 backdrop-blur-md syncopate-regular font-bold cursor-pointer text-white no-underline"
+  >
+    Login
+  </Link>
 
           {/* HAMBURGER */}
           <button

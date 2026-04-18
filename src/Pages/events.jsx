@@ -1309,7 +1309,7 @@ export default function Events() {
           <nav className="header-nav">
             <span className="nav-item">
 
-              <Link to="/home" className="nav-item">
+              <Link to="/" className="nav-item">
   Home
 </Link>
             </span>
