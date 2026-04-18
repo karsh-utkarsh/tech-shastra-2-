@@ -195,6 +195,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 2px;
   color: rgba(232,244,255,0.5);
   transition: color 0.25s;
+  
 }
 .nav-item:hover { color: var(--white); cursor: pointer; }
 .nav-register {
@@ -205,6 +206,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--cyan);
   color: var(--cyan);
   border-radius: 6px;
+  margin-left:20px;
   transition: background 0.25s, box-shadow 0.25s;
 }
 .nav-register:hover {
@@ -769,7 +771,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 900px) {
   .header-inner { padding: 14px 20px; }
   .header-nav { gap: 18px; }
-  .nav-item { display: none; }
+  .nav-item {  }
   .hero { padding: 50px 20px 40px; }
   .events-section { padding: 0 20px 80px; }
   .events-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }

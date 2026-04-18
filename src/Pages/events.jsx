@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 
 
+
+
 // ─── EVENT DATA ───────────────────────────────────────────────────────────────
 const DAYS = {
   1: {
@@ -1259,16 +1261,7 @@ const EventModal = ({ event, onClose, dayColor }) => {
           </div>
         </div>
         <div className="modal-footer">
-          <button
-  className="register-btn"
-  style={{ '--btn-color': event.color }}
-  onClick={() =>
-    window.open("https://forms.gle/SgSDRDcgDK4fmM877", "_blank")
-  }
->
-  REGISTER NOW
-  <span className="btn-glow" />
-</button>
+         
           <button className="close-text-btn" onClick={onClose}>← Back to Events</button>
         </div>
       </div>
@@ -1312,13 +1305,17 @@ export default function Events() {
               <Link to="/" className="nav-item">
   Home
 </Link>
+
+
+
+
+<Link to="/register" className="nav-register">
+  REGISTER
+</Link>
+
+
             </span>
-           <button
-      className="nav-register"
-      onClick={() => navigate("/register")}
-    >
-      REGISTER
-    </button>
+          
           </nav>
         </div>
       </header>

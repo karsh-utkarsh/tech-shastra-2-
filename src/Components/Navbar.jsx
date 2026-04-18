@@ -88,6 +88,15 @@ export default function Navbar({ mounted = true }) {
     Login
   </Link>
 
+  
+          {/* REGISTER BUTTON */}
+          <Link
+    to="/register"
+    className="hidden sm:block text-[10px] md:text-xs uppercase tracking-[0.2em] px-6 py-2 md:px-8 md:py-3 border border-white/20 rounded-full hover:bg-white hover:border-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.6)] transition-all duration-500 backdrop-blur-md syncopate-regular font-bold cursor-pointer text-white no-underline"
+  >
+    Register
+  </Link>
+
           {/* HAMBURGER */}
           <button
             className="lg:hidden flex flex-col p-2 group cursor-pointer relative w-8 h-8 justify-center items-center"
@@ -145,15 +154,27 @@ export default function Navbar({ mounted = true }) {
           )}
 
           {/* MOBILE REGISTER */}
-          <a
-            href="https://forms.gle/SgSDRDcgDK4fmM877"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsMenuOpen(false)}
-            className="mt-8 px-6 py-3 border border-cyan-400 text-cyan-300 rounded-full"
-          >
-            Register
-          </a>
+         <button
+      onClick={() => {
+        setIsMenuOpen(false);
+        navigate("/register");
+      }}
+      className="mt-8 px-6 py-3 border border-cyan-400 text-cyan-300 rounded-full"
+    >
+      Register
+    </button>
+
+    <button
+      onClick={() => {
+        setIsMenuOpen(false);
+        navigate("/login");
+      }}
+      className="mt-8 px-6 py-3 border border-cyan-400 text-cyan-300 rounded-full"
+    >
+      Login
+    </button>
+
+
         </div>
       </div>
     </>
