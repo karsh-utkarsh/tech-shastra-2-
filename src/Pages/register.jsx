@@ -116,8 +116,8 @@ function validateStep(step, data) {
   if (step === 1) {
     if (!data.fullName.trim()) errors.fullName = "Full name is required";
     if (!data.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) errors.email = "Valid email required";
-    if (!data.contactNumber.match(/^\+?\d{10,13}$/)) errors.contactNumber = "Valid phone required";
-    if (!data.whatsappNumber.match(/^\+?\d{10,13}$/)) errors.whatsappNumber = "Valid WhatsApp required";
+    if (!data.contactNumber.match(/^\+91?\d{10}$/)) errors.contactNumber = "Valid phone required";
+    if (!data.whatsappNumber.match(/^\+91?\d{10}$/)) errors.whatsappNumber = "Valid WhatsApp required";
     if (!data.gender) errors.gender = "Select gender";
   }
   if (step === 2) {
