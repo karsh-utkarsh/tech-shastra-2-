@@ -1302,3 +1302,12 @@ textarea {
   display: flex;
   justify-content: center;
 }
+
+.form-title{
+   margin-top:10%;
+}
+
+
+.form-subtitle{
+  margin-top:10%;
+}

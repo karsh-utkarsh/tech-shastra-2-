@@ -59,7 +59,7 @@ function TermsModal({ onAgree }) {
           <p className="terms-subtitle">TechShastra 2026 — Please read before registering</p>
         </div>
 <div className="terms-body">
-  <p>By registering for TechShastra 2026, you agree to the following:</p>
+  <p style={{fontWeight:"bold", fontSize: "20px" }}>By registering for TechShastra 2026, you agree to the following:</p>
   <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
     <li>Participants can register for multiple events (solo and/or team) with a single registration.</li>
     <li>Participants must review the event schedule/timeline to avoid clashes.</li>
@@ -464,10 +464,7 @@ export default function RegistrationForm({ onSubmit }) {
       <div className="form-wrapper">
         {/* Header */}
         <div className="form-header">
-          <div className="orbit-icon">
-            <div className="orbit-ring"><div className="orbit-dot" /></div>
-            <div className="planet-core" />
-          </div>
+          
           <h1 className="form-title">EVENT REGISTRATION</h1>
           <p className="form-subtitle">TechShastra 2026</p>
         </div>

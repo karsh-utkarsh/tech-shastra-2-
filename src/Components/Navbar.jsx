@@ -80,11 +80,11 @@ export default function Navbar({ mounted = true }) {
 
         {/* ACTION BUTTON + MENU */}
         <div className="flex items-center gap-4 lg:gap-6 z-[60]">
-          <img
-            src="/IMGs/tech-shastra1.jpeg"
-            alt="TechShastra"
-            className="block h-8 sm:h-10 md:h-12 lg:h-14 w-auto object-contain transition-transform duration-500 drop-shadow-[0_0_20px_rgba(0,255,255,0.5)] hover:scale-105"
-          />
+         <img
+  src="/IMGs/tech-shastra1.jpeg"
+  alt="TechShastra"
+  className="block h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain transition-transform duration-500 drop-shadow-[0_0_20px_rgba(0,255,255,0.5)] hover:scale-105"
+/>
 
           {/* HAMBURGER */}
           <button

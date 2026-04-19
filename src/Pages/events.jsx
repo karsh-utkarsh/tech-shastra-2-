@@ -1284,16 +1284,21 @@ export default function Events() {
   const day = DAYS[activeDay];
 
   return (
+    <>
+   
     <div className="app">
       <Starfield/>
       <NebulaOrbs/>
+ 
+      
+      
 
 
       {/* ── HERO ── */}
       <section className="hero">
         <div className="hero-eyebrow">
           <span className="eyebrow-dot"/>
-          EVENTS LINEUP
+           <span className="events-text">EVENTS LINEUP</span>
           <span className="eyebrow-dot"/>
         </div>
         <h1 className="hero-title">
@@ -1362,5 +1367,6 @@ export default function Events() {
         />
       )}
     </div>
+    </>
   );
 }
