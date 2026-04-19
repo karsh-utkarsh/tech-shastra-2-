@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "../Styles/register.css";
 
-// ─── STARFIELD ───────────────────────────────────────────────────────────────
+// ─── STARFIELD ────────────────────────────────────────────────────────────────
 function Starfield() {
   const stars = Array.from({ length: 120 }, (_, i) => ({
     id: i,
@@ -15,28 +15,19 @@ function Starfield() {
   }));
 
   return (
-
-   
-
-
-
     <div className="starfield">
       <div className="nebula-glow nebula-1" />
       <div className="nebula-glow nebula-2" />
       <div className="nebula-glow nebula-3" />
-
-
-       <div className="orbit-system-tr">
-    <div className="orbit-ring-1" />
-    <div className="orbit-ring-2" />
-    <div className="planet-main" />
-  </div>
-
-
-  <div className="orbit-system-bl">
-    <div className="orbit-ring-1" />
-    <div className="planet-main" />
-  </div>
+      <div className="orbit-system-tr">
+        <div className="orbit-ring-1" />
+        <div className="orbit-ring-2" />
+        <div className="planet-main" />
+      </div>
+      <div className="orbit-system-bl">
+        <div className="orbit-ring-1" />
+        <div className="planet-main" />
+      </div>
       {stars.map((s) => (
         <div
           key={s.id}
@@ -57,39 +48,50 @@ function Starfield() {
   );
 }
 
-// ─── CONFIG ──────────────────────────────────────────────────────────────────
+// ─── TERMS MODAL ──────────────────────────────────────────────────────────────
+function TermsModal({ onAgree }) {
+  return (
+    <div className="terms-overlay">
+      <div className="terms-modal">
+        <div className="terms-header">
+          <span className="terms-icon">📋</span>
+          <h2>Terms & Conditions</h2>
+          <p className="terms-subtitle">TechShastra 2026 — Please read before registering</p>
+        </div>
+
+        <div className="terms-body">
+          <p>By registering for TechShastra 2026, you agree to the following:</p>
+          <ul>
+            <li>To participate in solo events, the solo registration fee must be paid.</li>
+            <li>To participate in team events, the team registration fee must be paid.</li>
+            <li> Payment should be made only after finalizing event selections and reviewing all details carefully.</li>
+            <li>Registration fees are strictly non-refundable under any circumstances.</li>
+            <li> Participants must retain proof of payment for verification purposes.</li>
+            <li>Any incorrect or excess payment will not be considered valid and will not be refunded.</li>
+            <li>Participants are solely responsible for selecting the correct category (NSU/Other, Solo/Team) before payment.</li>
+            <li>The organizing team will not be responsible for registration failures due to incorrect information or payment errors.</li>
+            
+            <li> In case of confusion, participants are advised to verify details through official contacts or social media channels before making payment.</li>
+          </ul>
+        </div>
+
+        <div className="terms-footer">
+          <button className="btn btn-submit" onClick={onAgree}>
+            I Agree & Continue ✦
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── CONFIG ───────────────────────────────────────────────────────────────────
 const STEPS = [
   { id: 1, label: "Identity" },
   { id: 2, label: "Institute" },
-  { id: 3, label: "Events" },
-  { id: 4, label: "Payment" },
 ];
 
-const SOLO_EVENTS = [
-  { id: "coding", label: "EACAPE THE ROOM", icon: "💻" },
-  { id: "quiz", label: "Quiz", icon: "🧠" },
-  { id: "debate", label: "Debate", icon: "🎤" },
-  { id: "design", label: "UI Design", icon: "🎨" },
-  { id: "paper", label: "Paper Presentation", icon: "📄" },
-  { id: "photo", label: "Photography", icon: "📸" },
-];
-
-const TEAM_EVENTS = [
-  { id: "hackathon", label: "Quantum Quest", icon: "" },
-  { id: "robowar", label: "Bridge O Mania ", icon: "" },
-  { id: "gaming", label: "BGMI", icon: "🎮" },
-  { id: "startup", label: "kEYSTONE CHALLENGE", icon: "🚀" },
-  { id: "treasure", label: "MAELSTROM", icon: "🗺️" },
-  { id: "sports", label: "RAMPWALK", icon: "" },
-   { id: "CODE ", label: "CODE RELAY", icon: "" },
-    { id: "VIBE", label: "VIBE CODING", icon: "" },
-];
-
-const EVENT_FEES = {
-  solo: 150,
-  team: 200,
-  registration: 100,
-};
+const NSUT_NAME = "Netaji Subhas University";
 
 const initialData = {
   // Step 1 – Personal
@@ -99,18 +101,13 @@ const initialData = {
   whatsappNumber: "",
   gender: "",
   // Step 2 – Institute
+  isNSUT: false,
   college: "",
   university: "",
   collegeId: null,
   program: "",
   department: "",
   specifications: "",
-  // Step 3 – Events
-  soloEvents: [],
-  teamEvents: [],
-  // Step 4 – Payment
-  paymentMethod: "",
-  transactionId: "",
 };
 
 // ─── VALIDATION ───────────────────────────────────────────────────────────────
@@ -130,21 +127,13 @@ function validateStep(step, data) {
     if (!data.program) errors.program = "Select program";
     if (!data.department.trim()) errors.department = "Department required";
   }
-  if (step === 3) {
-    if (data.soloEvents.length === 0 && data.teamEvents.length === 0)
-      errors.events = "Select at least one event";
-  }
-  if (step === 4) {
-    if (!data.paymentMethod) errors.paymentMethod = "Select payment method";
-    if (!data.transactionId.trim()) errors.transactionId = "Transaction ID required";
-  }
   return errors;
 }
 
 // ─── FIELD COMPONENTS ─────────────────────────────────────────────────────────
-function Field({ label, error, children }) {
+function Field({ label, error, children, className }) {
   return (
-    <div className="field-group">
+    <div className={`field-group ${className || ""}`}>
       {label && <label>{label}</label>}
       {children}
       {error && <span className="error-text">⚠ {error}</span>}
@@ -165,7 +154,9 @@ function IconInput({ icon, ...props }) {
 function Step1({ data, onChange, errors }) {
   return (
     <div className="step-enter">
-      <p className="section-title"><span className="section-icon">👤</span> Personal Information</p>
+      <p className="section-title">
+        <span className="section-icon">👤</span> Personal Information
+      </p>
       <div className="form-grid">
         <Field label="Full Name" error={errors.fullName} className="span-2">
           <IconInput
@@ -242,7 +233,23 @@ function Step2({ data, onChange, errors }) {
 
   return (
     <div className="step-enter">
-      <p className="section-title"><span className="section-icon">🏛️</span> Institute Details</p>
+      <p className="section-title">
+        <span className="section-icon">🏛️</span> Institute Details
+      </p>
+
+      {/* ─── NSUT QUICK-FILL CHECKBOX ─────────────────────────────────── */}
+      <label className="nsut-checkbox-wrap">
+        <input
+          type="checkbox"
+          checked={data.isNSUT}
+          onChange={(e) => onChange("isNSUT", e.target.checked)}
+        />
+        <span className="nsut-checkbox-label">
+          <span className="nsut-badge">NSUT</span>
+          I am a student of Netaji Subhas University
+        </span>
+      </label>
+
       <div className="form-grid">
         <Field label="College / Institute Name" error={errors.college}>
           <input
@@ -250,6 +257,8 @@ function Step2({ data, onChange, errors }) {
             placeholder="Cosmos Institute of Technology"
             value={data.college}
             onChange={(e) => onChange("college", e.target.value)}
+            readOnly={data.isNSUT}
+            className={data.isNSUT ? "input-autofilled" : ""}
           />
         </Field>
 
@@ -259,11 +268,16 @@ function Step2({ data, onChange, errors }) {
             placeholder="Stellar University"
             value={data.university}
             onChange={(e) => onChange("university", e.target.value)}
+            readOnly={data.isNSUT}
+            className={data.isNSUT ? "input-autofilled" : ""}
           />
         </Field>
 
         <Field label="Current Program" error={errors.program}>
-          <select value={data.program} onChange={(e) => onChange("program", e.target.value)}>
+          <select
+            value={data.program}
+            onChange={(e) => onChange("program", e.target.value)}
+          >
             <option value="">— Select Program —</option>
             <option>B.Tech / B.E.</option>
             <option>M.Tech / M.E.</option>
@@ -290,7 +304,11 @@ function Step2({ data, onChange, errors }) {
             className={`file-upload-zone ${dragOver ? "drag-over" : ""}`}
             onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
             onDragLeave={() => setDragOver(false)}
-            onDrop={(e) => { e.preventDefault(); setDragOver(false); handleFile(e.dataTransfer.files[0]); }}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragOver(false);
+              handleFile(e.dataTransfer.files[0]);
+            }}
           >
             <input
               ref={fileRef}
@@ -305,7 +323,9 @@ function Step2({ data, onChange, errors }) {
               <p className="file-name">✓ {data.collegeId.name}</p>
             )}
           </div>
-          {errors.collegeId && <span className="error-text">⚠ {errors.collegeId}</span>}
+          {errors.collegeId && (
+            <span className="error-text">⚠ {errors.collegeId}</span>
+          )}
         </div>
 
         <div className="field-group span-2">
@@ -317,144 +337,6 @@ function Step2({ data, onChange, errors }) {
           />
         </div>
       </div>
-    </div>
-  );
-}
-
-// ─── STEP 3 – EVENTS ─────────────────────────────────────────────────────────
-function Step3({ data, onChange, errors }) {
-  function toggleEvent(type, id) {
-    const key = type === "solo" ? "soloEvents" : "teamEvents";
-    const arr = data[key];
-    onChange(key, arr.includes(id) ? arr.filter((e) => e !== id) : [...arr, id]);
-  }
-
-  return (
-    <div className="step-enter">
-      <p className="section-title"><span className="section-icon">⚡</span> Solo Events</p>
-      <div className="events-grid">
-        {SOLO_EVENTS.map((ev) => (
-          <label key={ev.id} className="event-chip">
-            <input
-              type="checkbox"
-              checked={data.soloEvents.includes(ev.id)}
-              onChange={() => toggleEvent("solo", ev.id)}
-            />
-            <span className="event-chip-label">
-              <span className="chip-icon">{ev.icon}</span>
-              {ev.label}
-            </span>
-          </label>
-        ))}
-      </div>
-
-      <div className="divider" />
-
-      <p className="section-title"><span className="section-icon">🚀</span> Team Events</p>
-      <div className="events-grid">
-        {TEAM_EVENTS.map((ev) => (
-          <label key={ev.id} className="event-chip">
-            <input
-              type="checkbox"
-              checked={data.teamEvents.includes(ev.id)}
-              onChange={() => toggleEvent("team", ev.id)}
-            />
-            <span className="event-chip-label">
-              <span className="chip-icon">{ev.icon}</span>
-              {ev.label}
-            </span>
-          </label>
-        ))}
-      </div>
-
-      {errors.events && (
-        <p className="error-text" style={{ marginTop: 16 }}>⚠ {errors.events}</p>
-      )}
-
-      <p className="helper-text" style={{ marginTop: 14 }}>
-        ✦ Solo: ₹{EVENT_FEES.solo}/event · Team: ₹{EVENT_FEES.team}/event (team fees split equally)
-      </p>
-    </div>
-  );
-}
-
-// ─── STEP 4 – PAYMENT ────────────────────────────────────────────────────────
-function Step4({ data, onChange, errors }) {
-  const soloTotal = data.soloEvents.length * EVENT_FEES.solo;
-  const teamTotal = data.teamEvents.length * EVENT_FEES.team;
-  const grandTotal = EVENT_FEES.registration + soloTotal + teamTotal;
-
-  return (
-    <div className="step-enter">
-      <p className="section-title"><span className="section-icon">💳</span> Payment Details</p>
-
-      <div className="payment-card">
-        <div>
-          <span className="payment-currency">₹</span>
-          <span className="payment-amount">{grandTotal}</span>
-        </div>
-        <div className="payment-breakdown">
-          <div className="breakdown-row">
-            <span>Registration Fee</span>
-            <span>₹{EVENT_FEES.registration}</span>
-          </div>
-          {data.soloEvents.length > 0 && (
-            <div className="breakdown-row">
-              <span>Solo Events ({data.soloEvents.length})</span>
-              <span>₹{soloTotal}</span>
-            </div>
-          )}
-          {data.teamEvents.length > 0 && (
-            <div className="breakdown-row">
-              <span>Team Events ({data.teamEvents.length})</span>
-              <span>₹{teamTotal}</span>
-            </div>
-          )}
-          <div className="breakdown-row total">
-            <span>Grand Total</span>
-            <span>₹{grandTotal}</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="field-group" style={{ marginBottom: 20 }}>
-        <label>Payment Method</label>
-        <div className="payment-methods">
-          {[
-            { id: "upi", icon: "📲", label: "UPI" },
-            { id: "card", icon: "💳", label: "Card" },
-            { id: "netbanking", icon: "🏦", label: "Net Banking" },
-          ].map((m) => (
-            <label key={m.id} className="payment-method">
-              <input
-                type="radio"
-                name="paymentMethod"
-                value={m.id}
-                checked={data.paymentMethod === m.id}
-                onChange={() => onChange("paymentMethod", m.id)}
-              />
-              <span className="payment-method-label">
-                <span className="pm-icon">{m.icon}</span>
-                {m.label}
-              </span>
-            </label>
-          ))}
-        </div>
-        {errors.paymentMethod && <span className="error-text">⚠ {errors.paymentMethod}</span>}
-      </div>
-
-      <Field label="Transaction ID / UTR Number" error={errors.transactionId}>
-        <IconInput
-          icon="#"
-          type="text"
-          placeholder="Enter transaction reference"
-          value={data.transactionId}
-          onChange={(e) => onChange("transactionId", e.target.value)}
-        />
-      </Field>
-      <p className="helper-text" style={{ marginTop: 6 }}>
-        Complete payment first, then enter the transaction ID from your payment receipt.
-      </p>
     </div>
   );
 }
@@ -481,12 +363,30 @@ function SuccessScreen({ regId }) {
 
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 export default function RegistrationForm({ onSubmit }) {
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [step, setStep] = useState(1);
   const [data, setData] = useState(initialData);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [regId, setRegId] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // ─── NSUT AUTO-FILL EFFECT ────────────────────────────────────────────────
+  useEffect(() => {
+    if (data.isNSUT) {
+      setData((d) => ({
+        ...d,
+        college: NSUT_NAME,
+        university: NSUT_NAME,
+      }));
+    } else {
+      setData((d) => ({
+        ...d,
+        college: d.college === NSUT_NAME ? "" : d.college,
+        university: d.university === NSUT_NAME ? "" : d.university,
+      }));
+    }
+  }, [data.isNSUT]);
 
   function onChange(key, val) {
     setData((d) => ({ ...d, [key]: val }));
@@ -500,14 +400,16 @@ export default function RegistrationForm({ onSubmit }) {
     setStep((s) => s + 1);
   }
 
-  function back() { setStep((s) => s - 1); setErrors({}); }
+  function back() {
+    setStep((s) => s - 1);
+    setErrors({});
+  }
 
   async function handleSubmit() {
-    const errs = validateStep(4, data);
+    const errs = validateStep(2, data);
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setLoading(true);
 
-    // Build FormData for backend-ready multipart submission
     const formData = new FormData();
     Object.entries(data).forEach(([k, v]) => {
       if (k === "collegeId" && v) formData.append("collegeId", v);
@@ -516,22 +418,18 @@ export default function RegistrationForm({ onSubmit }) {
     });
 
     // ── BACKEND HOOK ────────────────────────────────────────────────────────
-    // Swap the mock below with your real endpoint:
-    //
-    //   const res = await fetch("https://your-api.com/register", {
-    //     method: "POST",
-    //     body: formData,           // multipart, includes file
-    //   });
-    //   const json = await res.json();
-    //   setRegId(json.registrationId);
-    //
+    // const res = await fetch("https://your-api.com/register", {
+    //   method: "POST",
+    //   body: formData,
+    // });
+    // const json = await res.json();
+    // setRegId(json.registrationId);
     // ── END BACKEND HOOK ────────────────────────────────────────────────────
 
-    // Mock delay
     await new Promise((r) => setTimeout(r, 1400));
     const mockId = "EVT-" + Math.random().toString(36).slice(2, 8).toUpperCase();
     setRegId(mockId);
-    if (onSubmit) onSubmit(formData);         // optional parent callback
+    if (onSubmit) onSubmit(formData);
 
     setLoading(false);
     setSubmitted(true);
@@ -542,6 +440,11 @@ export default function RegistrationForm({ onSubmit }) {
   return (
     <>
       <Starfield />
+
+      {!agreedToTerms && (
+        <TermsModal onAgree={() => setAgreedToTerms(true)} />
+      )}
+
       <div className="form-wrapper">
         {/* Header */}
         <div className="form-header">
@@ -588,8 +491,6 @@ export default function RegistrationForm({ onSubmit }) {
             <>
               {step === 1 && <Step1 data={data} onChange={onChange} errors={errors} />}
               {step === 2 && <Step2 data={data} onChange={onChange} errors={errors} />}
-              {step === 3 && <Step3 data={data} onChange={onChange} errors={errors} />}
-              {step === 4 && <Step4 data={data} onChange={onChange} errors={errors} />}
 
               <div className="form-nav">
                 {step > 1 && (
@@ -597,7 +498,6 @@ export default function RegistrationForm({ onSubmit }) {
                     ← Back
                   </button>
                 )}
-
                 {step < STEPS.length ? (
                   <button className="btn btn-next" onClick={next}>
                     Continue →

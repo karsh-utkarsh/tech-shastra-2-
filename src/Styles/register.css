@@ -1110,3 +1110,190 @@ textarea {
   background: rgba(124,58,237,0.35);
   color: var(--stellar);
 }
+
+/* ─── TERMS MODAL ─────────────────────────────────────────────────── */
+.terms-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.terms-modal {
+  background: #0d0d1a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terms-header {
+  padding: 1.5rem 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terms-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+
+.terms-header h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.terms-subtitle { margin: 0; font-size: 0.8rem; opacity: 0.5; color: #fff; }
+
+.terms-body {
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.terms-body ul { padding-left: 1.25rem; margin: 0.5rem 0 0; }
+.terms-body li { margin-bottom: 0.5rem; }
+
+.terms-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── NSUT CHECKBOX ───────────────────────────────────────────────── */
+.nsut-checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: background 0.2s;
+}
+
+.nsut-checkbox-wrap:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nsut-checkbox-wrap input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #7c6df0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nsut-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nsut-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: rgba(124, 109, 240, 0.25);
+  color: #a99bf7;
+  border: 1px solid rgba(124, 109, 240, 0.4);
+  flex-shrink: 0;
+}
+
+/* ─── AUTO-FILLED INPUT STATE ─────────────────────────────────────── */
+.input-autofilled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  border-color: rgba(124, 109, 240, 0.35) !important;
+  background: rgba(124, 109, 240, 0.07) !important;
+}
+
+/* ─── TERMS MODAL ─────────────────────────────────────────────────── */
+.terms-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.terms-modal {
+  background: #0d0d1a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terms-header {
+  padding: 1.5rem 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terms-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.terms-header h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.terms-subtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  color: #fff;
+}
+
+.terms-body {
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.terms-body ul {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+.terms-body li {
+  margin-bottom: 0.5rem;
+}
+
+.terms-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+}

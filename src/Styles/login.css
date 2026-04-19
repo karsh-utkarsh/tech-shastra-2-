@@ -518,7 +518,7 @@
 
 .lg-input-icon {
   position: absolute;
-  left: 14px;
+  left: 10px;
   color: var(--lg-text-muted);
   pointer-events: none;
   display: flex;
@@ -545,7 +545,8 @@
   box-sizing: border-box;
 }
 
-.lg-input::placeholder { color: var(--lg-text-dim); }
+.lg-input::placeholder { color: var(--lg-text-dim); 
+}
 
 .lg-input:focus {
   border-color: var(--lg-violet-mid);
