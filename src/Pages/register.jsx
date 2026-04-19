@@ -58,36 +58,38 @@ function TermsModal({ onAgree }) {
           <h2>Terms & Conditions</h2>
           <p className="terms-subtitle">TechShastra 2026 — Please read before registering</p>
         </div>
+<div className="terms-body">
+  <p>By registering for TechShastra 2026, you agree to the following:</p>
+  <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+    <li>Participants can register for multiple events (solo and/or team) with a single registration.</li>
+    <li>Participants must review the event schedule/timeline to avoid clashes.</li>
+    <li>It is strongly recommended to read all event details before registration.</li>
+  </ul>
 
-        <div className="terms-body">
-          <p>By registering for TechShastra 2026, you agree to the following:</p>
-          <ul>
-            <li> Participants can register for multiple events (solo and/or team) with a single registration.</li>
-            <li> Participants must review the event schedule/timeline to avoid clashes.</li>
-            <li>It is strongly recommended to read all event details before registration.</li>
+  <p style={{ fontWeight: "bold" }}>Registration Fee Structure</p>
 
-            <p>Registration Fee Structure</p>
+  <p style={{ fontWeight: "bold" }}>For NSU Students:</p>
+  <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+    <li>Solo Participation: ₹250</li>
+    <li>Team Participation: ₹250 (per team)</li>
+  </ul>
 
+  <p style={{ fontWeight: "bold" }}>For Students from Other Schools/Colleges/Institutes/Universities:</p>
+  <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+    <li>Solo Participation: ₹500</li>
+    <li>Team Participation: ₹500 (per team)</li>
+  </ul>
 
-            <li>For NSU Students:</li>
-            <li>Solo Participation: ₹250</li>
-            <li>Team Participation: ₹250 (per team)</li>
-
-
-            <p>For Students from Other Schools/Colleges/Institutes/Universities:</p>
-            <li>Solo Participation: ₹500</li>
-            <li>Team Participation: ₹500 (per team)</li>
-
-
-            <li>Registration fees are strictly non-refundable under any circumstances.</li>
-            <li> Participants must retain proof of payment for verification purposes.</li>
-            <li>Any incorrect or excess payment will not be considered valid and will not be refunded.</li>
-            <li>Participants are solely responsible for selecting the correct category (NSU/Other, Solo/Team) before payment.</li>
-            <li>The organizing team will not be responsible for registration failures due to incorrect information or payment errors.</li>
-            
-            <li> In case of confusion, participants are advised to verify details through official contacts or social media channels before making payment.</li>
-          </ul>
-        </div>
+  <p style={{ fontWeight: "bold" }}>Important Notes:</p>
+  <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
+    <li>Registration fees are strictly non-refundable under any circumstances.</li>
+    <li>Participants must retain proof of payment for verification purposes.</li>
+    <li>Any incorrect or excess payment will not be considered valid and will not be refunded.</li>
+    <li>Participants are solely responsible for selecting the correct category (NSU/Other, Solo/Team) before payment.</li>
+    <li>The organizing team will not be responsible for registration failures due to incorrect information or payment errors.</li>
+    <li>In case of confusion, participants are advised to verify details through official contacts or social media channels before making payment.</li>
+  </ul>
+</div>
 
         <div className="terms-footer">
           <button className="btn btn-submit" onClick={onAgree}>
