@@ -8,9 +8,12 @@ import Team from "./Pages/team.jsx";
 import Register from "./Pages/register.jsx"
 import Login from "./Pages/login.jsx";
 
+import Navbar from "./Components/Navbar";
+
 function App() {
   return (
     <Router>
+      <Navbar mounted={true} />
       <Routes>
         {/* Home Page */}
         <Route path ="/events" element={<Events />} />

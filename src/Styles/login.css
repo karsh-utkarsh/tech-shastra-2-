@@ -336,6 +336,7 @@
 .lg-card {
   position: relative;
   width: 100%;
+  margin-top:10vh;
   max-width: 440px;
   background: linear-gradient(160deg, rgba(22,18,48,0.96) 0%, rgba(11,7,32,0.99) 100%);
   border: 1px solid var(--lg-border);

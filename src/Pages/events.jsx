@@ -1288,37 +1288,6 @@ export default function Events() {
       <Starfield/>
       <NebulaOrbs/>
 
-      {/* ── HEADER ── */}
-      <header className="site-header">
-        <div className="header-inner">
-          <div className="logo">
-            <span className="logo-icon">✦</span>
-           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-  <div>
-    <div className="logo-sub">TECHSHASTRA 2026</div>
-  </div>
-</Link>
-          </div>
-          <nav className="header-nav">
-            <span className="nav-item">
-
-              <Link to="/" className="nav-item">
-  Home
-</Link>
-
-
-
-
-<Link to="/register" className="nav-register">
-  REGISTER
-</Link>
-
-
-            </span>
-          
-          </nav>
-        </div>
-      </header>
 
       {/* ── HERO ── */}
       <section className="hero">

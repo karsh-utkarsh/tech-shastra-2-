@@ -90,7 +90,7 @@ export default function Contact() {
                 <div className="contact-faculty-item">
                   <div className="contact-faculty-name">Rajdeep Ray</div>
                   <div className="contact-faculty-pos">
-                    Student Coordinator (CSE) – TechShastra 2026
+                    Student Coordinator (CSE)
                   </div>
                   <div className="contact-faculty-phone">
                     <span className="contact-phone-icon">📞</span> +91 98353
@@ -100,7 +100,7 @@ export default function Contact() {
                 <div className="contact-faculty-item">
                   <div className="contact-faculty-name">Ankesh</div>
                   <div className="contact-faculty-pos">
-                    Student Coordinator (Civil) – TechShastra 2026
+                    Student Coordinator (Civil)
                   </div>
                   <div className="contact-faculty-phone">
                     <span className="contact-phone-icon">📞</span> +91 87579
@@ -110,7 +110,7 @@ export default function Contact() {
                 <div className="contact-faculty-item">
                   <div className="contact-faculty-name">Vickey Kumar</div>
                   <div className="contact-faculty-pos">
-                    Student Coordinator (Electrical) – TechShastra 2026
+                    Student Coordinator (Electrical)
                   </div>
                   <div className="contact-faculty-phone">
                     <span className="contact-phone-icon">📞</span> +91 77618
@@ -120,7 +120,7 @@ export default function Contact() {
                 <div className="contact-faculty-item">
                   <div className="contact-faculty-name">Vishal Yadav</div>
                   <div className="contact-faculty-pos">
-                    Student Coordinator (Mechanical) – TechShastra 2026
+                    Student Coordinator (Mechanical)
                   </div>
                   <div className="contact-faculty-phone">
                     <span className="contact-phone-icon">📞</span> +91 98613

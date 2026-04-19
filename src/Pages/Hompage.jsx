@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../index.css";
-import Navbar from "../Components/Navbar";
+import { Link } from "react-router-dom";
 
 export default function App() {
   const [mounted, setMounted] = useState(false);
@@ -29,11 +29,10 @@ export default function App() {
     <div className="relative h-screen w-full overflow-hidden bg-[#050505] text-white font-sans selection:bg-cyan-500 selection:text-black">
       {/* ================= MAIN PORTAL CONTENT ================= */}
       <div
-        className={`absolute inset-0 transition-all duration-[2000ms] ease-out ${
-          mounted
-            ? "opacity-100 scale-100 blur-none"
-            : "opacity-0 scale-105 blur-md"
-        }`}
+        className={`absolute inset-0 transition-all duration-[2000ms] ease-out ${mounted
+          ? "opacity-100 scale-100 blur-none"
+          : "opacity-0 scale-105 blur-md"
+          }`}
       >
         {/* Cinematic Background Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-black">
@@ -54,14 +53,11 @@ export default function App() {
         {/* Soft vignette/blur framing the center */}
         <div className="absolute inset-0 shadow-[inset_0_0_150px_rgba(0,0,0,0.9)] z-0 pointer-events-none"></div>
 
-        {/* --- PREMIUM NAVBAR --- */}
-        <Navbar mounted={mounted} />
 
         {/* --- UI METRICS & HEADERS --- */}
         <div
-          className={`absolute top-24 md:top-30 left-6 md:left-12 right-6 md:right-12 z-50 flex items-center justify-between transition-all duration-1000 delay-500 ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
-          }`}
+          className={`absolute top-24 md:top-30 left-6 md:left-12 right-6 md:right-12 z-50 flex items-center justify-between transition-all duration-1000 delay-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+            }`}
         >
           {/* Animated divider line */}
           <div className="hidden md:flex relative h-px flex-1 mx-16 overflow-hidden bg-white/10">
@@ -71,9 +67,8 @@ export default function App() {
 
         {/* --- BOTTOM SCIFI DETAILS --- */}
         <div
-          className={`absolute bottom-6 md:bottom-12 left-6 right-6 z-20 flex flex-col md:flex-row justify-between items-start md:items-end text-[10px] md:text-xs text-gray-400 tracking-widest syncopate-regular gap-4 pointer-events-none transition-all duration-1000 delay-[800ms] ${
-            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
+          className={`absolute bottom-6 md:bottom-12 left-6 right-6 z-20 flex flex-col md:flex-row justify-between items-start md:items-end text-[10px] md:text-xs text-gray-400 tracking-widest syncopate-regular gap-4 pointer-events-none transition-all duration-1000 delay-[800ms] ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
         >
           <div className="leading-relaxed">
             <span className="text-white/50">SYS.REV:</span> 4.0.9
@@ -90,9 +85,8 @@ export default function App() {
 
         {/* --- CENTER TEXT ANIMATION --- */}
         <div
-          className={`relative z-20 flex h-full flex-col items-center justify-center px-4 transition-all duration-[1500ms] ease-out delay-300 ${
-            mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
-          }`}
+          className={`relative z-20 flex h-full flex-col items-center justify-center px-4 transition-all duration-[1500ms] ease-out delay-300 ${mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            }`}
         >
           <div className="float-pulse perspective-1000 w-full text-center">
             <h1
@@ -116,6 +110,23 @@ export default function App() {
             <p className="mt-8 md:mt-12 text-xs md:text-xl text-cyan-200 tracking-[0.5em] md:tracking-[1em] font-light uppercase opacity-100 drop-shadow-[0_0_15px_rgba(0,255,255,0.6)] syncopate-regular ml-2 md:ml-4">
               Step Into The Future
             </p>
+
+            <div style={{ marginTop: '50px' }} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-6 sm:px-0">
+              <Link
+                to="/login"
+                className="group relative inline-flex items-center justify-center w-44 sm:w-48 md:w-52 py-3 md:py-3.5 text-[11px] md:text-xs uppercase tracking-[0.2em] rounded-full border border-white/30 text-white syncopate-regular font-bold no-underline backdrop-blur-md bg-white/5 overflow-hidden transition-all duration-500 hover:border-white/60 hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                <span className="relative z-10">Login</span>
+              </Link>
+              <Link
+                to="/register"
+                className="group relative inline-flex items-center justify-center w-44 sm:w-48 md:w-52 py-3 md:py-3.5 text-[11px] md:text-xs uppercase tracking-[0.2em] rounded-full border border-cyan-400/50 text-white syncopate-regular font-bold no-underline backdrop-blur-md bg-gradient-to-r from-cyan-500/20 to-blue-600/20 overflow-hidden transition-all duration-500 hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(0,255,255,0.4)] hover:scale-105 active:scale-95"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/20 to-cyan-400/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                <span className="relative z-10">Register</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

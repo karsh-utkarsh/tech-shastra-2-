@@ -9,7 +9,6 @@ const IMG = {
   jupiter: "/planets/jupiter.jpg",
   saturn: "/planets/saturn.png",
   uranus: "/planets/uranus.png",
-  neptune: "/planets/neptune.png",
 };
 
 const MILESTONES = [
@@ -105,19 +104,6 @@ const MILESTONES = [
       "Celebrate the victories with trophies, cash prizes, and closing performances!",
     dateLabel: "MAY 9",
   },
-  {
-    id: 8,
-    key: "neptune",
-    name: "PRO NIGHT",
-    subtitle: "Celebration",
-    phase: "Phase 8",
-    date: "May 9",
-    status: "active",
-    glow: "#5070ff",
-    description:
-      "Wind down, connect with participants and industry leaders, and celebrate the successful conclusion of TechShastra.",
-    dateLabel: "MAY 9",
-  },
 ];
 
 /* Per-planet zoom so the photo fills the sphere with zero gaps */
@@ -129,10 +115,9 @@ const PLANET_SCALE = {
   jupiter: 1.8,
   saturn: 1.4,
   uranus: 2.1,
-  neptune: 2.0,
 };
 
-const STARS = Array.from({ length: 220 }, (_, i) => {
+const STARS = Array.from({ length: 50 }, (_, i) => {
   const s = Math.random();
   return {
     id: i,
