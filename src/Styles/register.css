@@ -1291,6 +1291,11 @@ textarea {
   margin-bottom: 0.5rem;
 }
 
+.terms-body p{
+  color:white;
+  margin-top:20px;
+}
+
 .terms-footer {
   padding: 1rem 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);

@@ -62,9 +62,23 @@ function TermsModal({ onAgree }) {
         <div className="terms-body">
           <p>By registering for TechShastra 2026, you agree to the following:</p>
           <ul>
-            <li>To participate in solo events, the solo registration fee must be paid.</li>
-            <li>To participate in team events, the team registration fee must be paid.</li>
-            <li> Payment should be made only after finalizing event selections and reviewing all details carefully.</li>
+            <li> Participants can register for multiple events (solo and/or team) with a single registration.</li>
+            <li> Participants must review the event schedule/timeline to avoid clashes.</li>
+            <li>It is strongly recommended to read all event details before registration.</li>
+
+            <p>Registration Fee Structure</p>
+
+
+            <li>For NSU Students:</li>
+            <li>Solo Participation: ₹250</li>
+            <li>Team Participation: ₹250 (per team)</li>
+
+
+            <p>For Students from Other Schools/Colleges/Institutes/Universities:</p>
+            <li>Solo Participation: ₹500</li>
+            <li>Team Participation: ₹500 (per team)</li>
+
+
             <li>Registration fees are strictly non-refundable under any circumstances.</li>
             <li> Participants must retain proof of payment for verification purposes.</li>
             <li>Any incorrect or excess payment will not be considered valid and will not be refunded.</li>
