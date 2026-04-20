@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import "../styles/events.css"
+import "../Styles/event.css"
 import { Link } from "react-router-dom";
 
 
